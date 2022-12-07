@@ -1,0 +1,210 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        table {
+            border-collapse: separate;
+            border-spacing: 0 15px;
+        }
+
+        td {
+            padding: 0 15px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function checkvalidation() {
+
+            Uid = document.getElementById("uid").value;
+            divuid = document.getElementById("uidErr");
+            if (Uid.length < 5 || Uid.length > 7) {
+                divuid.innerHTML = "[5 to 7 Characters]";
+                document.getElementById("uid").focus();
+                return false;
+            }
+            else {
+                divuid.innerHTML = "";
+            }
+
+            Pswd = document.getElementById("pswd").value;
+            divpswd = document.getElementById("pswdErr");
+            if (Pswd.length < 7 || Pswd.length > 12) {
+                divpswd.innerHTML = "[7 to 12 Characters]";
+                document.getElementById("pswd").focus();
+                return false;
+            }
+            else {
+                divpswd.innerHTML = "";
+            }
+
+            Name = document.getElementById("name").value;
+            divname = document.getElementById("nameErr");
+            if (!Name.match(/^[A-Za-z]+$/)) {
+                divname.innerHTML = "[Alphabets Character]";
+                document.getElementById("name").focus();
+                return false;
+            }
+            else {
+                divname.innerHTML = "";
+            }
+
+            Address = document.getElementById("address").value;
+            divaddress = document.getElementById("addressErr");
+            if (!Address.match(/^[0-9a-zA-Z]+$/)) {
+                divaddress.innerHTML = "[Alphanumeric Character]";
+                document.getElementById("address").focus();
+                return false;
+            }
+            else {
+                divaddress.innerHTML = "";
+            }
+
+            Country = document.getElementById("country").value;
+            divcountry = document.getElementById("countryErr");
+            if (Country == 0) {
+                divcountry.innerHTML = "[Must select a country]";
+                document.getElementById("country").focus();
+                return false;
+            }
+            else {
+                divcountry.innerHTML = "";
+            }
+
+            Zip = document.getElementById("zip").value;
+            divzip = document.getElementById("zipErr");
+            if (Zip == 0) {
+                divzip.innerHTML = "[Alphanumeric Characters]";
+                document.getElementById("zip").focus();
+                return false;
+            }
+            else {
+                divzip.innerHTML = "";
+            }
+
+            Email = document.getElementById("email").value;
+            divemail = document.getElementById("emailErr");
+            var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-za-z]{2,4})$/;
+            if (Email == "") {
+                divemail.innerHTML = "[required]";
+                document.getElementById("email").focus();
+                return false;
+            }
+            else {
+                divemail.innerHTML = "";
+            }
+            if (reg.test(Email) == false) {
+                divemail.innerHTML = "Enter Valid Mail Id";
+                document.getElementById("email").focus();
+                return false;
+            }
+            else {
+                divemail.innerHTML = "";
+            }
+
+
+
+            window.alert("Successfully Registered")
+        }
+    </script>
+    <script type="text/javascript" src="JavaScript.js"></script>
+
+    <h4 align="center"><b>REGISTRATION FORM</b></h4>
+
+    <form align="center" style="border:outset">
+
+        <table align="center">
+
+            <tr>
+                <td><b>User Id</b></td>
+                <td><div class="error" id="uidErr"></div> </td>
+                <td><input type="text" id="uid" /> </td>
+            </tr>
+
+            <tr>
+                <td><b>Password  </b></td>
+                <td><div class="error" id="pswdErr"></div> </td>s
+                <td><input type="text" id="pswd" /></td>
+            </tr>
+
+            <tr>
+                <td><b>Name  :</b></td>
+                <td><div class="error" id="nameErr"></div> </td>
+                <td><input type="text" id="name" /></td>
+            </tr>
+
+            <tr>
+                <td><b>Address  </b></td>
+                <td><div class="error" id="addressErr"></div> </td>
+                <td><input type="text" id="address" /></td>
+            </tr>
+
+
+            <tr>
+                <td><b>Country  </b></td>
+                <td><div class="error" id="countryErr"></div> </td>
+                <td>
+                    <select id="country">
+                        <option value=0>(Please Select a Country)</option>
+                        <option value=1>India</option>
+                        <option value=2>USA</option>
+                        <option value=3>UAE</option>
+
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td><b>ZIP Code  </b></td>
+                <td><div class="error" id="zipErr"></div> </td>
+                <td><input type="text" id="zip" /></td>
+            </tr>
+
+            <tr>
+                <td><b>Email  </b></td>
+                <td><div class="error" id="emailErr"></div> </td>
+                <td><input type="text" id="email" onclick="return checkvalidation()" /></td>
+            </tr>
+
+            <tr>
+                <td><b>Sex  </b></td>
+                <td><div>[Select Male or Female]</div> </td>
+                <td>
+                    <input type="radio" value="Male" name="gender" id="male" />Male
+                    <input type="radio" value="Female" name="gender" id="female" />Female
+                </td>
+            </tr>
+
+            <tr>
+                <td><b>Language   </b></td>
+                <td><div>[Optional]</div> </td>
+                <td>
+                    <input type="checkbox" id="lang" />English
+                    <input type="checkbox" id="lang" />Non English
+                </td>
+            </tr>
+
+            <tr>
+                <td><b>About   </b></td>
+                <td><div>[Optional]</div> </td>
+                <td><textarea id="about" rows="5" cols="23"></textarea></td>
+            </tr>
+
+            <tr>
+                <td colspan="5" align="center">
+                    <input type="submit"  style="background-color:blue;width:stretch" value="REGISTER" onclick="return checkvalidation()" />
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+</html>
